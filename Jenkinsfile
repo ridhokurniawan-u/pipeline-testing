@@ -6,7 +6,6 @@ pipeline {
                 echo 'Starting Clone Stage'
                 echo 'Build Finished'
                 echo 'lmfao'
-                }
             }
         }
     }
