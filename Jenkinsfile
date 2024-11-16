@@ -14,6 +14,7 @@ pipeline {
             steps {
                 echo 'testing Run'
                 git branch: 'main', url: 'https://github.com/ridhokurniawan-u/Home-Automation.git' 
+                echo 'BOO!'
                 echo 'Run Finished'
             }
         }
