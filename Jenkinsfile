@@ -13,6 +13,8 @@ pipeline {
         stage('Testing Run'){
             steps {
                 echo 'testing Run'
+                git branch: 'main', url: 'https://github.com/ridhokurniawan-u/Home-Automation.git' 
+                sh 'cat Home-Automation.ino'
                 echo 'Run Finished'
             }
         }
