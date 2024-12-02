@@ -1,0 +1,15 @@
+kind: pipeline
+type: docker
+name: ssh-testing
+
+steps:
+  - name: ssh-ing
+    image: appleboy/drone-ssh
+    settings:
+      host: 
+      username: 
+      password: 
+        from_secret: ssh-pass
+      port: 22
+      script:
+        - echo "Hello"
