@@ -8,7 +8,7 @@ steps:
       - echo "Starting Build"
       - mkdir -p /home/ubuntu/testing-golang
       - cd /home/ubuntu/testing-golang
-      - git clone https://ridhokurniawan-u/pipeline-testing.git
+      - git clone https://github.com/ridhokurniawan-u/pipeline-testing.git
       - go mod init main.go
       - CGO_ENABLED=0 GOOS=linux go build -o testing-maingo
 
