@@ -1,5 +1,5 @@
 kind: pipeline
-type: docker
+type: exec
 name: ssh-testing
 
 steps:
@@ -8,6 +8,7 @@ steps:
     settings:
       host: 
       username: 
+        from_secret: ssh-host
       password: 
         from_secret: ssh-pass
       port: 22
