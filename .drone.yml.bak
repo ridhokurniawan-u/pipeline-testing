@@ -1,44 +1,27 @@
 kind: pipeline
-type: docker
+type: exec
 name: runner-test
 
 steps:
   - name: Build
-    image: golang
-    volumes:
-      - name: build-volume
-        path: /home/ubuntu
     commands: 
       - echo "Starting Build"
-      - mkdir -p /home/ubuntu/Go
-      - cp main.go /home/ubuntu/Go
-      - cd /home/ubuntu/Go
-      - go mod init app
-      - go build -o app
+      - mkdir -p /home/ubuntu/testing-golang
+      - cd /home/ubuntu/testing-golang
+      - git clone https://ridhokurniawan-u/pipeline-testing.git
+      - go mod init main.go
+      - CGO_ENABLED=0 GOOS=linux go build -o testing-maingo
 
   - name: Deploy
-    image: golang
-    resources:
-      limits:
-        memory: 512MiB
-        cpu: 0.5
-    volumes:
-      - name: build-volume
-        path: /home/ubuntu/Go
     commands:
       - echo "Deploying"
-      - cd /home/ubuntu/Go
-      - ./app
+      - cd /home/ubuntu/testing-golang
+      - nohup ./testing-maingo &
+      - tail nohup.out
       - echo "Deployed"
 
   - name: Goofy ahh
-    image: alpine
     commands:
       - echo "Hello, World!"
       - echo "( ͡° ͜ʖ ͡°)"
       - echo "Ghost Commit"
-
-volumes: 
-  - name: build-volume
-    host:
-      path: /home/ubuntu
