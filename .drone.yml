@@ -24,4 +24,3 @@ steps:
     commands:
       - echo "Hello, World!"
       - echo "( ͡° ͜ʖ ͡°)"
-      - echo "Ghost Commit"
